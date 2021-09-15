@@ -1,11 +1,9 @@
 Config { 
 	-- appearance
-		font =           "xft:Fira Code:size=11:antialias=true"
-		, bgColor =      "#19181E"
-		, fgColor =      "#FFF"
-		, position =     Top
-		-- , border =       BottomB
-		-- , borderColor =  "#646464"
+		font =       "xft:Fira Code:size=11:antialias=true"
+		, bgColor =  "#19181E"
+		, fgColor =  "#FFF"
+		, position = Top
 
 		-- layout
 		, sepChar =  "%"   -- delineator between plugin names and straight text
@@ -34,7 +32,5 @@ Config {
 		--   The --template option controls how the plugin is displayed. Text
 		--   color can be set by enclosing in <fc></fc> tags. For more details
 		--   see http://projects.haskell.org/xmobar/#system-monitor-plugins.
-		, commands = 
-			[ Run UnsafeStdinReader
-			]
+		, commands = [ Run UnsafeStdinReader ]
 }

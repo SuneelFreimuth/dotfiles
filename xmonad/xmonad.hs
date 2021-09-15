@@ -25,8 +25,6 @@ import Data.String
 import Data.List
 import Data.Monoid
 
-seafoam = "#58d8f4"
-
 main = do
     n <- countScreens
     xmbprocs <- mapM (\i -> spawnPipe $ "xmobar -x " ++ show i) [0..n-1]
@@ -43,6 +41,7 @@ main = do
         }
 
 ---------------------------------------------------------------------------
+
 myLogHook xmbprocs = mapM_ configurePP xmbprocs
     where
         configurePP xmbproc =
@@ -55,7 +54,6 @@ myLogHook xmbprocs = mapM_ configurePP xmbprocs
                 , ppTitle   = colorNormal
                 , ppSep = colorDimmed "| "
                 , ppOrder = \(ws:l:t:ex) -> [ws, t] ++ ex
-                -- , ppExtras = [ padL $ date "%a %b %d" ]
                 }
 
 padIfSmall s =
@@ -67,8 +65,9 @@ colorActive = xmobarColor "#000" "#c3e88d"
 colorNormal = xmobarColor "#FFF" ""
 colorDimmed = xmobarColor "#888" ""
 
--- > removeSequence "and" "1 and 2 and 3!"
--- "1  2  3!"
+-- For example:
+--   Prelude> removeSequence "and" "1 and 2 and 3!"
+--   "1  2  3!"
 removeSequence :: Eq a => [a] -> [a] -> [a]
 removeSequence _ [] = []
 removeSequence sequence li =
@@ -96,7 +95,7 @@ myTerm = "WINIT_X11_SCALE_FACTOR=1 alacritty"
 
 myLayoutHook = avoidStruts $ myLayouts
 
-myLayouts = myFull ||| myTall -- ||| myThreeCol
+myLayouts = myFull ||| myTall
     where
         vertMargin = 6
         horMargin  = 9
@@ -158,6 +157,7 @@ myScratchpads =
         (className =? "SimpleScreenRecorder")
         smallLayout
     ] where
+        -- Math to leave horizontal and vertical gaps of the given proportions.
         xGap   = 1/5
         yGap   = 1/7
         layout = customFloating $
