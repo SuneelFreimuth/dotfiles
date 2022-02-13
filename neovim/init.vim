@@ -22,8 +22,9 @@ augroup Markdown
 augroup end
 
 call plug#begin('~/.vim/plugged')
-   Plug 'ziglang/zig.vim'
-   Plug 'fatih/vim-go'
-   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-   Plug 'psf/black'
+	Plug 'SuneelFreimuth/vim-gemtext'
+	Plug 'ziglang/zig.vim'
+	Plug 'fatih/vim-go'
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	Plug 'psf/black'
 call plug#end()
